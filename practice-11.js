@@ -14,7 +14,7 @@ class Student extends Person{
         this.klass= klass;
     }
     introduce(){
-        if(this.klass.leader){
+        if(this.klass.leader&&this.isIn()){
             return super.introduce()+`. I am a student. I am the leader of class ${this.klass.number}.`;
         }
         else {
@@ -23,10 +23,10 @@ class Student extends Person{
     }
     isIn(){
         if (student.key){
-            return "I exits in the class";
+            return 1;
         }
         else {
-            return "I not exits!";
+            return 0;
         }
     }
 }
@@ -46,10 +46,18 @@ class Teacher extends Person{
     isTeaching(student){
         for(let i=0;i<this.klass.length;i++){
             while (this.klass[i]===student.klass.number){
-                return super.introduce() + `. I am a teacher. I teach ${student.name}.`;
+                return 1;
                 break;
             }
-            return super.introduce()+`. I am a teacher. I teach no ${student.name}.`;
+            return 0;
+        }
+    }
+    introduceWith(student){
+        if(this.isTeaching(student)){
+            return super.introduce()+`. I am a Teacher. I teach ${student.name}.`;
+        }
+        else {
+            return super.introduce()+`. I am a Teacher. I teach no ${student.name}.`;
         }
     }
 }
@@ -76,8 +84,9 @@ let student=new Student('2015210812','Jerry',21,klass);
 klass.appendMember(student);student.isIn();
 student.klass.assignLeader(student);
 let teacher=new Teacher('2015210811','Tom',21,[2,3]);
+teacher.isTeaching(student);
 console.log(person.introduce());
 console.log(student.introduce());
 console.log(student.isIn());
 console.log(teacher.introduce());
-console.log(teacher.isTeaching(student));
+console.log(teacher.introduceWith(student));
