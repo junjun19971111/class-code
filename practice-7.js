@@ -13,7 +13,7 @@ class Student extends Person{
         this.klass=klass;
     }
     introduce(){
-        return super.introduce()+`. I am at class ${this.klass}.`;
+        return super.introduce()+`. I am a student. I am at class ${this.klass}.`;
     }
 }
 class Teacher extends Person{
@@ -23,10 +23,10 @@ class Teacher extends Person{
     }
     introduce(){
         if(this.klass){
-            return super.introduce() + `I teach at class ${this.klass}`;
+            return super.introduce() + `. I am a teacher. I teach at class ${this.klass}`;
         }
         else {
-            return super.introduce() + `.I teach at no class.`;
+            return super.introduce() + `. I am a teacher. I teach at no class.`;
         }
     }
 }
