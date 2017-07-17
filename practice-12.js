@@ -38,12 +38,14 @@ class Teacher extends Person{
     }
     isTeaching(student){
         for(let i=0;i<this.klass.length;i++){
-            while (this.klass[i]===student.klass.number&&student.klass.isIn()){
+            if(this.klass[i]===student.klass.number&&student.klass.isIn()){
                 return 1;
-                break;
             }
-            return 0;
+            else {
+                continue;
+            }
         }
+        return 0;
     }
     introduceWith(student){
         if(this.isTeaching(student)){
